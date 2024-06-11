@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>普榕树</title>
+    <link rel="stylesheet" type="text/css" href="./css/styles.css">
+    <style type="text/css">
+        /*演示用，请勿引入项目中*/
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font: normal 14px/1.5 Arial, Microsoft Yahei;
+            color: #333;
+        }
+
+        .example {
+            padding: 20px;
+        }
+
+        .example p {
+            margin: 20px 0;
+        }
+
+        a {
+            display: inline-block;
+            background: #61B3E6;
+            color: #fff;
+            padding: 8px 10px;
+            border-radius: 4px;
+            text-align: center;
+            margin: 0 5px;
+            line-height: 36px;
+            font-size: 30px;
+            text-decoration: none;
+        }
+
+        a.btn-warn {
+            background: #F0AD4E;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+
+        /*核心css*/
+        .wxtip {
+            background: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 998;
+            display: none;
+        }
+
+        .wxtip-icon {
+            width: 52px;
+            height: 67px;
+            background: url(http://caibaojian.com/d/uploads/2016/01/weixin-tip.png) no-repeat;
+            display: block;
+            position: absolute;
+            right: 30px;
+            top: 20px;
+        }
+
+        .wxtip-txt {
+            padding-top: 107px;
+            color: #fff;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+<div class="content">
+    <h1 style="margin-top: 24px;margin-bottom: 24px;">普榕树</h1>
+    <img src="./img/app_logo.png" width="200" height="200"/>
+    <a href="https://go2money.xyz/download/money-android.apk" id="JdownApp" class="btn text">下载安卓应用</a>
+    <a href="itms-services://?action=download-manifest&url=https://go2money.xyz/download/manifest.plist" id="JdownApp2"
+       class="btn text">下载IOS应用</a>
+    <p class="text" style="margin-top: 24px;font-size: 36px;">下载完成请返回桌面查看下载结果</p>
+    <a href= "https://m.go2money.xyz" class="btn text">无法下载IOS应用，点击这里</a>
+    <div class="wxtip" id="JweixinTip">
+        <span class="wxtip-icon"></span>
+        <p class="wxtip-txt">点击右上角<br/>选择在浏览器中打开</p>
+    </div>
+</div>
+<script type="text/javascript">
+    var ua = navigator.userAgent;
+    var isWeixin = !!/MicroMessenger/i.test(ua);
+
+    function weixinTip() {
+
+        if (isWeixin) {
+            // 如果是微信则直接提示浏览器打开
+            document.getElementById('JweixinTip').style.display = 'block';
+        }
+    }
+
+    // 判断当前浏览器环境
+    weixinTip()
+    if (!isWeixin) {
+        setTimeout(() => {
+            const url = "https://m.go2money.xyz"
+            window.location.href = url + "?time" + (new Date().getTime())
+        }, 300)
+    }
+</script>
+</body>
+
+</html>
